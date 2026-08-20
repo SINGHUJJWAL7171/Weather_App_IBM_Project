@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="WeatherNow - A responsive weather application"
+    >
+
+    <title>WeatherNow</title>
+
+
+    <!-- Font Awesome -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================================
+         HEADER
+    ========================================= -->
+
+    <header class="header">
+
+        <div class="container header-content">
+
+            <div class="logo">
+
+                <i class="fa-solid fa-cloud-sun"></i>
+
+                <h1>WeatherNow</h1>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ========================================
+         MAIN
+    ========================================= -->
+
+    <main class="container main-content">
+
+
+        <!-- SEARCH SECTION -->
+
+        <section class="search-section">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+
+                <input
+                    type="text"
+                    id="cityInput"
+                    placeholder="Search for a city..."
+                >
+
+
+                <button
+                    id="searchBtn"
+                    class="search-btn"
+                >
+
+                    <i class="fa-solid fa-search"></i>
+
+                    Search
+
+                </button>
+
+            </div>
+
+
+            <button
+                id="locationBtn"
+                class="location-btn"
+            >
+
+                <i class="fa-solid fa-location-crosshairs"></i>
+
+                Use My Location
+
+            </button>
+
+        </section>
+
+
+
+        <!-- ERROR MESSAGE -->
+
+        <div
+            id="errorMessage"
+            class="error-message hidden"
+        >
+
+            <i class="fa-solid fa-triangle-exclamation"></i>
+
+            <p id="errorText">
+                Something went wrong.
+            </p>
+
+        </div>
+
+
+
+        <!-- LOADING -->
+
+        <div
+            id="loading"
+            class="loading hidden"
+        >
+
+            <div class="spinner"></div>
+
+            <p>
+                Loading weather information...
+            </p>
+
+        </div>
+
+
+
+        <!-- ========================================
+             CURRENT WEATHER
+        ========================================= -->
+
+        <section class="current-weather-card">
+
+            <div class="current-weather-top">
+
+
+                <div>
+
+                    <p class="location-label">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        Current Weather
+
+                    </p>
+
+
+                    <h2 id="cityName">
+                        Search a city
+                    </h2>
+
+
+                    <p id="dateTime">
+                        Today
+                    </p>
+
+                </div>
+
+
+                <div class="weather-icon">
+
+                    <i class="fa-solid fa-cloud-sun"></i>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="temperature-section">
+
+
+                <div class="temperature">
+
+                    <span id="temperature">
+                        --
+                    </span>
+
+                    <span id="temperatureUnit">
+                        °C
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <p
+                        id="weatherCondition"
+                        class="condition"
+                    >
+                        Search for a city
+                    </p>
+
+
+                    <p class="feels-like">
+
+                        Feels like
+
+                        <span id="feelsLike">
+                            --
+                        </span>
+
+                        °C
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             WEATHER DETAILS
+        ========================================= -->
+
+        <section class="details-section">
+
+            <div class="section-heading">
+
+                <h2>
+                    Weather Details
+                </h2>
+
+            </div>
+
+
+            <div class="details-grid">
+
+
+                <!-- HUMIDITY -->
+
+                <div class="detail-card">
+
+                    <div class="detail-icon">
+
+                        <i class="fa-solid fa-droplet"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <p class="detail-title">
+                            Humidity
+                        </p>
+
+
+                        <p class="detail-value">
+
+                            <span id="humidity">
+                                --
+                            </span>%
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- WIND -->
+
+                <div class="detail-card">
+
+                    <div class="detail-icon">
+
+                        <i class="fa-solid fa-wind"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <p class="detail-title">
+                            Wind Speed
+                        </p>
+
+
+                        <p class="detail-value">
+
+                            <span id="windSpeed">
+                                --
+                            </span>
+
+                            km/h
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PRESSURE -->
+
+                <div class="detail-card">
+
+                    <div class="detail-icon">
+
+                        <i class="fa-solid fa-gauge-high"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <p class="detail-title">
+                            Pressure
+                        </p>
+
+
+                        <p class="detail-value">
+
+                            <span id="pressure">
+                                --
+                            </span>
+
+                            hPa
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- VISIBILITY -->
+
+                <div class="detail-card">
+
+                    <div class="detail-icon">
+
+                        <i class="fa-solid fa-eye"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <p class="detail-title">
+                            Visibility
+                        </p>
+
+
+                        <p class="detail-value">
+
+                            <span id="visibility">
+                                --
+                            </span>
+
+                            km
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             5 DAY FORECAST
+        ========================================= -->
+
+        <section class="forecast-section">
+
+            <div class="section-heading">
+
+                <h2>
+                    5-Day Forecast
+                </h2>
+
+            </div>
+
+
+            <div class="forecast-grid">
+
+
+                <!-- DAY 1 -->
+
+                <div class="forecast-card">
+
+                    <p class="forecast-day">
+                        Today
+                    </p>
+
+
+                    <div class="forecast-icon">
+
+                        <i class="fa-solid fa-sun"></i>
+
+                    </div>
+
+
+                    <p class="forecast-condition">
+                        --
+                    </p>
+
+
+                    <p class="forecast-temp">
+                        -- / --°C
+                    </p>
+
+                </div>
+
+
+
+                <!-- DAY 2 -->
+
+                <div class="forecast-card">
+
+                    <p class="forecast-day">
+                        --
+                    </p>
+
+
+                    <div class="forecast-icon">
+
+                        <i class="fa-solid fa-cloud"></i>
+
+                    </div>
+
+
+                    <p class="forecast-condition">
+                        --
+                    </p>
+
+
+                    <p class="forecast-temp">
+                        -- / --°C
+                    </p>
+
+                </div>
+
+
+
+                <!-- DAY 3 -->
+
+                <div class="forecast-card">
+
+                    <p class="forecast-day">
+                        --
+                    </p>
+
+
+                    <div class="forecast-icon">
+
+                        <i class="fa-solid fa-cloud"></i>
+
+                    </div>
+
+
+                    <p class="forecast-condition">
+                        --
+                    </p>
+
+
+                    <p class="forecast-temp">
+                        -- / --°C
+                    </p>
+
+                </div>
+
+
+
+                <!-- DAY 4 -->
+
+                <div class="forecast-card">
+
+                    <p class="forecast-day">
+                        --
+                    </p>
+
+
+                    <div class="forecast-icon">
+
+                        <i class="fa-solid fa-cloud"></i>
+
+                    </div>
+
+
+                    <p class="forecast-condition">
+                        --
+                    </p>
+
+
+                    <p class="forecast-temp">
+                        -- / --°C
+                    </p>
+
+                </div>
+
+
+
+                <!-- DAY 5 -->
+
+                <div class="forecast-card">
+
+                    <p class="forecast-day">
+                        --
+                    </p>
+
+
+                    <div class="forecast-icon">
+
+                        <i class="fa-solid fa-cloud"></i>
+
+                    </div>
+
+
+                    <p class="forecast-condition">
+                        --
+                    </p>
+
+
+                    <p class="forecast-temp">
+                        -- / --°C
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ========================================
+         FOOTER
+    ========================================= -->
+
+    <footer class="footer">
+
+        <p>
+
+            <i class="fa-solid fa-cloud-sun"></i>
+
+            © 2026 WeatherNow
+
+        </p>
+
+
+        <p>
+            Full Stack Weather Application
+        </p>
+
+    </footer>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script
+        type="module"
+        src="js/app.js"
+    ></script>
+
+</body>
+
+</html>

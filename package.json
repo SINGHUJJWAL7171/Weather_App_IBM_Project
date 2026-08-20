@@ -1,0 +1,23 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "WeatherNow - Full Stack Weather Application",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "weather",
+    "web-development",
+    "nodejs",
+    "express"
+  ],
+  "author": "Ujjwal Singh",
+  "license": "ISC",
+  "dependencies": {
+     "cors": "^2.8.6",
+    "express": "^5.1.0"
+  }
+}
