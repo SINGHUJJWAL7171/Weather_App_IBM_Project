@@ -16,9 +16,11 @@ body {
         Helvetica,
         sans-serif;
 
-    background: #af6af0;
+    background-image: url(https://i.ibb.co/Rk6PXN9X/weather.jpg);
+    background-size: cover;
+    background-position: center;
 
-    color: #1f2937;
+    color: #2b384a;
 
     min-height: 100vh;
 
@@ -47,10 +49,10 @@ body {
 
 .header {
 
-    background: white;
+    background: rgb(237, 201, 201);
 
     border-bottom:
-        1px solid #e5e7eb;
+        1px solid #869fd1;
 
     padding: 18px 0;
 
@@ -59,7 +61,7 @@ body {
 
 .header-content {
 
-    display: flex;
+    display: flexbox;
 
     justify-content:
         space-between;
@@ -71,7 +73,7 @@ body {
 
 .logo {
 
-    display: flex;
+    display: flexbox;
 
     align-items: center;
 
@@ -201,7 +203,7 @@ body {
 
 .search-box input {
 
-    flex: 1;
+    flex: 2;
 
     border: none;
 
@@ -216,7 +218,7 @@ body {
 
     border: none;
 
-    background: #2563eb;
+    background: #eb2564;
 
     color: white;
 
