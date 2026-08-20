@@ -346,9 +346,8 @@ app.listen(
     PORT,
     () => {
 
-        console.log(
-            `WeatherNow server running at http://localhost:${PORT}`
-        );
-
+    console.log(
+    `WeatherNow server running on port ${PORT}`
+);
     }
 );
